@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/OptionStateSchema" xmlns:tns="http://www.example.org/OptionStateSchema" elementFormDefault="qualified">
+
+    <complexType name="OptionState">
+    	<sequence>
+    		<element name="strikePrice" type="double"></element>
+    		<element name="interestRate" type="double"></element>
+    		<element name="maturity" type="double"></element>
+    		<element name="underlyingAssetPrice" type="double"></element>
+    		<element name="volatility" type="double"></element>
+    		<element name="dividendYield" type="double"></element>
+    		<element name="type" type="tns:OptionType"></element>
+    		<element name="exercise" type="tns:OptionExercise"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="OptionGreekState">
+    	<sequence>
+    		<element name="delta" type="double"></element>
+    		<element name="gamma" type="double"></element>
+    		<element name="theta" type="double"></element>
+    		<element name="vega" type="double"></element>
+    		<element name="rho" type="double"></element>
+    	</sequence>
+    </complexType>
+
+    <simpleType name="OptionType">
+    	<restriction base="string">
+    		<enumeration value="CALL"></enumeration>
+    		<enumeration value="PUT"></enumeration>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="OptionExercise">
+    	<restriction base="string">
+    		<enumeration value="EUROPEAN"></enumeration>
+    		<enumeration value="AMERICAN"></enumeration>
+    	</restriction>
+    </simpleType>
+
+    <element name="optionState" type="tns:OptionState"></element>
+</schema>
